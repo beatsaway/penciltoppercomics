@@ -16,13 +16,19 @@
       letter-spacing: 0.01em;
     }
     .container {
-      max-width: 700px;
+      /* Remove the max-width constraint */
+      width: 100%;
       margin: 0 auto;
       padding: 20px 10px;
+      box-sizing: border-box;
+    }
+    .steps-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
     }
     .step {
       background: #fff;
-      margin-bottom: 32px;
       border-radius: 16px;
       box-shadow: 0 2px 12px rgba(0,0,0,0.10);
       padding: 16px;
@@ -59,7 +65,7 @@
       justify-content: center;
     }
     .text-col h3 {
-      font-size: 1.08em;
+      font-size: 1.4em;
       color: #2979ff;
       margin: 0 0 7px 0;
       font-weight: bold;
@@ -69,27 +75,43 @@
       gap: 6px;
     }
     .text-col p {
-      font-size: 1.28em;
+      font-size: 1.1em;
       margin: 0 0 0 0;
       text-align: left;
       line-height: 1.6;
       font-family: 'Comic Sans MS', 'Comic Neue', Comic, cursive, sans-serif;
       word-break: break-word;
     }
+
+    /* 2-column layout for larger screens only */
+    @media (min-width: 1200px) {
+      .steps-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px 32px;
+      }
+      .step {
+        flex-direction: row;
+        height: 100%;
+      }
+    }
+
     @media (max-width: 900px) {
-      .container { max-width: 99vw; }
+      .container { width: 99vw; }
+      .steps-grid { gap: 20px; }
       .step { gap: 14px; }
       .img-col img { max-width: 120px; }
-      .text-col h3 { font-size: 1em; }
-      .text-col p { font-size: 1.13em; }
+      .text-col h3 { font-size: 1.25em; }
+      .text-col p { font-size: 1.05em; }
     }
     @media (max-width: 700px) {
+      .steps-grid { gap: 14px; }
       .step {
         padding: 10px 0;
         gap: 10px;
       }
       .img-col img { max-width: 90px;}
-      .text-col h3 { font-size: 0.98em; }
+      .text-col h3 { font-size: 1.15em; }
       .text-col p { font-size: 1em; }
     }
     @media (max-width: 600px) {
@@ -102,8 +124,8 @@
       .img-col { flex: 0 0 33%; max-width: 33%; }
       .text-col { flex: 0 0 67%; max-width: 67%; }
       .img-col img { width: 100%; min-width: 50px; max-width: 70px;}
-      .text-col h3 { font-size: 0.93em; }
-      .text-col p { font-size: 0.99em; }
+      .text-col h3 { font-size: 1.1em; }
+      .text-col p { font-size: 0.95em; }
     }
     @media (max-width: 420px) {
       .step {
@@ -113,94 +135,87 @@
       }
       .img-col, .text-col { flex: unset; max-width: 100%; width: 100%; }
       .img-col img { max-width: 96vw; min-width: 40px;}
-      .text-col h3 { font-size: 0.95em; text-align: center;}
-      .text-col p { font-size: 0.97em; text-align: center;}
+      .text-col h3 { font-size: 1.05em; text-align: center;}
+      .text-col p { font-size: 0.9em; text-align: center;}
     }
   </style>
 </head>
 <body>
   <div class="container">
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p1.jpg" alt="Step 1">
+    <div class="steps-grid">
+      <div class="step">
+        <div class="img-col">
+          <img src="p1.jpg" alt="Step 1">
+        </div>
+        <div class="text-col">
+          <h3>🔍 What inspired your pencil topper design? How did you come up with your ideas?</h3>
+          <p>At the start of the project, I explored different pencil toppers online and thought about what inspired me. I considered what I like and dislike about various designs before coming up with my own ideas. My favourite inspiration was ... because ... 💡📱</p>
+        </div>
       </div>
-      <div class="text-col">
-        <h3>🔍 What inspired your pencil topper design? How did you come up with your ideas?</h3>
-        <p>At the start of the project, I explored different pencil toppers online and thought about what inspired me. I considered what I like and dislike about various designs before coming up with my own ideas. My favourite inspiration was ... because ... 💡📱</p>
+      <div class="step">
+        <div class="img-col">
+          <img src="p2.jpg" alt="Step 2">
+        </div>
+        <div class="text-col">
+          <h3>✏️ What ideas did you draw? What was your favourite and least favourite, and why?</h3>
+          <p>I sketched out several design ideas for my pencil topper. My favourite idea was ... because ... My least favourite was ... because ... 🎨✨</p>
+        </div>
       </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p2.jpg" alt="Step 2">
+      <div class="step">
+        <div class="img-col">
+          <img src="p3.jpg" alt="Step 3">
+        </div>
+        <div class="text-col">
+          <h3>🛠️ How did you make your first prototype?</h3>
+          <p>I created my first prototype by drawing the shape of my design on cardboard and cutting out the layers. I thought about who my target users would be and why they would like my design. 🎯</p>
+        </div>
       </div>
-      <div class="text-col">
-        <h3>✏️ What ideas did you draw? What was your favourite and least favourite, and why?</h3>
-        <p>I sketched out several design ideas for my pencil topper. My favourite idea was ... because ... My least favourite was ... because ... 🎨✨</p>
+      <div class="step">
+        <div class="img-col">
+          <img src="p4.jpg" alt="Step 4">
+        </div>
+        <div class="text-col">
+          <h3>🔪 What cutting tips are the most important to you?</h3>
+          <p>I learned to use a coping saw to cut MDF pieces safely. The most important tips for me are to secure the piece properly, cut at the correct angle, and take my time for accuracy. 🪓</p>
+        </div>
       </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p3.jpg" alt="Step 3">
+      <div class="step">
+        <div class="img-col">
+          <img src="p5.jpg" alt="Step 5">
+        </div>
+        <div class="text-col">
+          <h3>📏 How did you cut out the layers? What was easy or difficult about it?</h3>
+          <p>To cut the layers, I started with the middle layer and made careful cuts for the pencil space. Cutting out small shapes was challenging, but sanding made it easier to get a good fit. ✂️🖊️</p>
+        </div>
       </div>
-      <div class="text-col">
-        <h3>🛠️ How did you make your first prototype?</h3>
-        <p>I created my first prototype by drawing the shape of my design on cardboard and cutting out the layers. I thought about who my target users would be and why they would like my design. 🎯</p>
+      <div class="step">
+        <div class="img-col">
+          <img src="p6.jpg" alt="Step 6">
+        </div>
+        <div class="text-col">
+          <h3>🧩 How did you assemble the layers?</h3>
+          <p>I assembled the layers by carefully gluing them together, making sure everything lined up. I chose to tape some pieces first before gluing to avoid cracking the thin layers. 🧷👏</p>
+        </div>
       </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p4.jpg" alt="Step 4">
+      <div class="step">
+        <div class="img-col">
+          <img src="p7.jpg" alt="Step 7">
+        </div>
+        <div class="text-col">
+          <h3>❓ How did you get a smooth finish?</h3>
+          <p>I used a hand file, then sandpaper, and finally wet and dry paper to get a smooth finish. I learned not to wet the sandpaper because wood absorbs moisture. Holding the piece properly while sanding helped me achieve a better result. 🧽💪</p>
+        </div>
       </div>
-      <div class="text-col">
-        <h3>🔪 What cutting tips are the most important to you?</h3>
-        <p>I learned to use a coping saw to cut MDF pieces safely. The most important tips for me are to secure the piece properly, cut at the correct angle, and take my time for accuracy. 🪓</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p5.jpg" alt="Step 5">
-      </div>
-      <div class="text-col">
-        <h3>📏 How did you cut out the layers? What was easy or difficult about it?</h3>
-        <p>To cut the layers, I started with the middle layer and made careful cuts for the pencil space. Cutting out small shapes was challenging, but sanding made it easier to get a good fit. ✂️🖊️</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p6.jpg" alt="Step 6">
-      </div>
-      <div class="text-col">
-        <h3>🧩 How did you assemble the layers?</h3>
-        <p>I assembled the layers by carefully gluing them together, making sure everything lined up. I chose to tape some pieces first before gluing to avoid cracking the thin layers. 🧷👏</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p7.jpg" alt="Step 7">
-      </div>
-      <div class="text-col">
-        <h3>❓ How did you get a smooth finish?</h3>
-        <p>I used a hand file, then sandpaper, and finally wet and dry paper to get a smooth finish. I learned not to wet the sandpaper because wood absorbs moisture. Holding the piece properly while sanding helped me achieve a better result. 🧽💪</p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="img-col">
-        <img src="p8.jpg" alt="Step 8">
-      </div>
-      <div class="text-col">
-        <h3>🔥 What have you learnt while doing the pyrography?</h3>
-        <p>During the pyrography step, I used a soldering iron to burn designs into the wood. I learned to work slowly, use only one hand to hold the iron, and to be careful because it gets very hot. 🍉⚡</p>
+      <div class="step">
+        <div class="img-col">
+          <img src="p8.jpg" alt="Step 8">
+        </div>
+        <div class="text-col">
+          <h3>🔥 What have you learnt while doing the pyrography?</h3>
+          <p>During the pyrography step, I used a soldering iron to burn designs into the wood. I learned to work slowly, use only one hand to hold the iron, and to be careful because it gets very hot. 🍉⚡</p>
+        </div>
       </div>
     </div>
-
   </div>
 </body>
 </html>
